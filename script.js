@@ -2,21 +2,29 @@ var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 var numbers = '0123456789';
 var symbols = '!"#$%&\'()*+,-./:;<=>?@^[\\]^_`{|}~';
+var pwLength
+var useUpper
+var useLower
+var useNumber
+var useSpecial
 
-var pwLength = prompt("Please enter a password length between 8 and 128")
-var useUpper = confirm("Would you like to use uppercase letters?");
-var useLower = confirm("Would you like to use lowercase letters?");
-var useNumber = confirm("Would you like to use numbers?")
-var useSpecial = confirm("Would you like to use special characters?")
+function promptmessage() {
+    pwLength = prompt("Please enter a password length between 8 and 128")
+    useUpper = confirm("Would you like to use uppercase letters?");
+    useLower = confirm("Would you like to use lowercase letters?");
+    useNumber = confirm("Would you like to use numbers?");
+    useSpecial = confirm("Would you like to use special characters?");
 
-console.log(pwLength);
-console.log(useUpper);
-console.log(useLower);
-console.log(useNumber);
-console.log(useSpecial);
+    console.log(pwLength);
+    console.log(useUpper);
+    console.log(useLower);
+    console.log(useNumber);
+    console.log(useSpecial);
+}
 
 
 function generate() {
+    promptmessage()
     var pc = ""
     if (useUpper) {
         console.log("Validated and Working Uppercase True");
@@ -43,6 +51,13 @@ function generate() {
         pc = pc + symbols
     }
     console.log(pc);
+
+    if (!useUpper && !useLower && !useNumber && !useSpecial) {
+        alert("You need to choose at least one criteria");
+        generate()
+
+    }
+
 
     var password = '';
     for (var i = 0; i < pwLength; i++) {
